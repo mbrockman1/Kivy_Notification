@@ -18,6 +18,13 @@
             text: '5'
             size_hint: 1, None
             input_filter: 'int'
+        Label:
+            text: 'Repeat'
+        Switch:
+            id: switch
+        Label:
+            id: repeat_toggle
+            text: 'True' if switch.active else 'False'
     Button:
         text: 'Simple Notification'
         size_hint: 1, None

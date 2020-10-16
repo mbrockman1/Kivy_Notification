@@ -31,10 +31,12 @@ class IosNotification(Notification):
         self._notification_worker = autoclass('NotificationWorker').alloc().init()
 
     def _notify(self, **kwargs):
-        self._notification_worker.requestNotificationCenter_withbody_withtiming_(
+        print(bool(kwargs.get('repeat')))
+        self._notification_worker.requestNotificationCenter_withbody_withtiming_withrepeat_(
             objc_str(kwargs.get('title')),
             objc_str(kwargs.get('message')),
-            kwargs.get('timing'))
+            kwargs.get('timing'),
+            bool(kwargs.get('repeat')))
         print("Request Sent")
 
 def instance():

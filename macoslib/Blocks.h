@@ -5,6 +5,6 @@
 @interface NotificationWorker : NSObject {}
 
 - (void)requestAuthorization;
-- (void)requestNotificationCenter:(NSString *)py_title withbody:(NSString *)py_body withtiming:(int)py_timing;
+- (void)requestNotificationCenter:(NSString *)py_title withbody:(NSString *)py_body withtiming:(int)py_timing withrepeat:(bool)py_repeat;
 
 @end

@@ -16,7 +16,7 @@
 }
 
 
-- (void)requestNotificationCenter:(NSString *)py_title withbody:(NSString *)py_body withtiming:(int)py_timing{
+- (void)requestNotificationCenter:(NSString *)py_title withbody:(NSString *)py_body withtiming:(int)py_timing withrepeat:(bool)py_repeat{
       UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
       UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
 
@@ -28,13 +28,12 @@
       }];
 
       UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-      NSLog(@"@", py_title);
       content.title = py_title;
       content.body = py_body;
       content.sound = [UNNotificationSound defaultSound];
 
       UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
-        triggerWithTimeInterval:py_timing repeats:NO];
+        triggerWithTimeInterval:py_timing repeats:py_repeat];
 
         NSString *identifier = @"UYLLocalNotification";
         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier

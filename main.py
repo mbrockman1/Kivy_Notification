@@ -14,8 +14,9 @@ class NotificationDemo(BoxLayout):
         title = self.ids.notification_title.text
         message = self.ids.notification_text.text
         timing = self.ids.timing_text.text
-        print(timing)
-        kwargs = {'title': title, 'message': message, 'timing': timing}
+        repeat = self.ids.repeat_toggle.text
+        kwargs = {'title': title, 'message': message,
+                  'timing': timing, 'repeat': repeat}
 
         notification.notify(**kwargs)
 
