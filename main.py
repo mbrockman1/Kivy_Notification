@@ -13,8 +13,9 @@ class NotificationDemo(BoxLayout):
     def do_notify(self, mode='normal'):
         title = self.ids.notification_title.text
         message = self.ids.notification_text.text
-        ticker = self.ids.ticker_text.text
-        kwargs = {'title': title, 'message': message, 'ticker': ticker}
+        timing = self.ids.timing_text.text
+        print(timing)
+        kwargs = {'title': title, 'message': message, 'timing': timing}
 
         notification.notify(**kwargs)
 

@@ -20,30 +20,22 @@ UNTimeIntervalNotificationTrigger = autoclass('UNTimeIntervalNotificationTrigger
 UNUserNotificationCenter = autoclass('UNUserNotificationCenter')
 NSString = autoclass('NSString')
 
-load_dylib('./UniBlocks.dylib')
+make_dylib('./macoslib/Blocks.m', frameworks=['Foundation', 'UserNotifications'])
+load_dylib('./macoslib/Blocks.dylib')
 
 
 class macosNotification(Notification):
+    def __init__(self):
+        super().__init__()
+        self._notification_worker = autoclass('NotificationWorker').alloc().init()
 
     def _notify(self, **kwargs):
-
-        def string_to_ns(x):
-            NSString.alloc().initWithUTF8String_(x)
-
-        local_noti = UNMutableNotificationContent.alloc().init()
-
-        local_noti.title = string_to_ns(kwargs.get('title'))
-        local_noti.body = string_to_ns(kwargs.get('message'))
-
-        trigger =\
-            UNTimeIntervalNotificationTrigger.triggerWithTimeInterval_repeats_(5, False)
-        request = UNNotificationRequest.requestWithIdentifier_content_trigger_(
-            objc_str(uniqueid.id),
-            local_noti,
-            trigger)
-        center = UNUserNotificationCenter.currentNotificationCenter()
-        center.addNotificationRequest_(request)
+        self._notification_worker.requestNotificationCenter_withbody_withtiming_(
+            objc_str(kwargs.get('title')),
+            objc_str(kwargs.get('message')),
+            kwargs.get('timing'))
         print("Request Sent")
+
 
 def instance():
     return macosNotification()

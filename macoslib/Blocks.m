@@ -50,38 +50,5 @@
 
 }
 
-// - (void)requestNotificationCenter:(NSString *)py_title withbody:(NSString *)py_body {
-//       UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//       UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
-//
-//       [center requestAuthorizationWithOptions:options
-//        completionHandler:^(BOOL granted, NSError * _Nullable error) {
-//         if (!granted) {
-//           NSLog(@"Something went wrong");
-//         }
-//       }];
-//
-//       UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-//       content.title = @"Don't forget";
-//       content.body = @"Buy some milk";
-//       content.sound = [UNNotificationSound defaultSound];
-//
-//       UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
-//         triggerWithTimeInterval:10 repeats:NO];
-//
-//         NSString *identifier = @"UYLLocalNotification";
-//         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
-//           content:content trigger:trigger];
-//
-//         [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-//           if (error != nil) {
-//             NSLog(@"Something went wrong: %@",error);
-//           }
-//         }];
-//
-//
-//
-// }
-
 
 @end
