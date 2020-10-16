@@ -14,10 +14,23 @@ class NotificationDemo(BoxLayout):
         title = self.ids.notification_title.text
         message = self.ids.notification_text.text
         timing = self.ids.timing_text.text
-        print(timing)
-        kwargs = {'title': title, 'message': message, 'timing': timing}
+        repeat = self.ids.repeat_text.active
+        kwargs = {'title': title, 'message': message,
+                  'timing': timing, 'repeat': repeat}
 
         notification.notify(**kwargs)
+
+    def remove_notifications(self):
+        notification.remove_notifications()
+
+    def repeat_active(self, state):
+        repeat_bool = False
+        if state:
+            repeat_bool = True
+        else:
+            repeat_bool = False
+        return repeat_bool
+
 
 
 class NotificationDemoApp(App):

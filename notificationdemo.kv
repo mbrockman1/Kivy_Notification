@@ -18,8 +18,19 @@
             text: '5'
             size_hint: 1, None
             input_filter: 'int'
+        Label:
+            text: "Repeat: "
+        CheckBox:
+            id : repeat_text
+            size_hint: 1, None
+            on_active: root.repeat_active(self.active)
     Button:
         text: 'Simple Notification'
         size_hint: 1, None
         on_release: root.do_notify(mode='normal')
+    Button:
+        id: remove_notifications
+        text: 'Remove Notifications'
+        size_hint: 1, None
+        on_release: root.remove_notifications()
     Widget:
